@@ -1,0 +1,44 @@
+<div class="h-full bg-cover bg-center" style="background-image: url(assets/moon.jpg)">
+  <div class="bg-stone-950 w-fit bg-opacity-50 p-2 rounded-md mx-auto md:mx-32 pt-8">
+    <span class="uppercase font-bold tracking-tighter text-sm text-slate-500">start for free</span>
+    <h1 class="text-2xl md:text-3xl text-white font-bold my-1">Create new account<span class="text-5xl text-emerald-500">.</span></h1>
+    <h3 class="font-bold text-slate-500 mb-3">Already a member ? <a href="#" class="text-emerald-500 underline hover:text-emerald-600">Log in</a></h3>
+    <div class="text-red-700 font-bold mb-2">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <%= form_with(model: @user, url: '/signup') do |f| %>
+      <div class="py-2 flex flex-col gap-5 bg-slate-800 font-bold rounded-xl border-2 border-slate-800">
+        <div class="bg-slate-800 font-bold px-2 rounded-xl grid grid-cols-1 group">
+          <%= f.label :username, class: "#{@user.errors[:username].any? ? 'text-red-700' : 'text-slate-500'} text-sm group-focus-within:text-emerald-500" %>
+          <%= f.text_field :username, autofocus: !@user.errors[:username].any?, placeholder: "Your username",
+            class: "w-full md:text-sm text-slate-300 bg-slate-800 p-0 border-0 
+          placeholder:text-slate-700 focus:ring-0 focus:border-b-2 focus:border-emerald-500" %>
+        </div>
+        <div class="bg-slate-800 font-bold px-2 rounded-xl grid grid-cols-1 group">
+          <%= f.label :email, class: "#{@user.errors[:email].any? ? 'text-red-700' : 'text-slate-500'} text-sm group-focus-within:text-emerald-500" %>
+          <%= f.email_field :email, placeholder: "Your email address",
+            class: "w-full md:text-sm text-slate-300 bg-slate-800 p-0 border-0 
+          placeholder:text-slate-700 focus:ring-0 focus:border-b-2 focus:border-emerald-500" %>
+        </div>
+        <div class="bg-slate-800 font-bold px-2 rounded-xl grid grid-cols-1 group">
+          <%= f.label :password, class: "#{@user.errors[:password].any? ? 'text-red-700' : 'text-slate-500'} text-sm group-focus-within:text-emerald-500" %>
+          <%= f.password_field :password, placeholder: "Secret password",
+            class: "w-full md:text-sm text-slate-300 bg-slate-800 p-0 border-0
+          placeholder:text-slate-700 focus:ring-0 focus:border-b-2 focus:border-emerald-500" %>
+        </div>
+        <div class="bg-slate-800 font-bold px-2 rounded-xl grid grid-cols-1 group">
+          <%= f.label :password_confirmation, class: "#{@user.errors[:password_confirmation].any? || @user.errors[:password].any? ? 'text-red-700' : 'text-slate-500'} 
+          text-sm group-focus-within:text-emerald-500" %>
+          <%= f.password_field :password_confirmation, placeholder: "Secret password confirmation",
+            class: "w-full md:text-sm text-slate-300 bg-slate-800 p-0 border-0 
+          placeholder:text-slate-700 focus:ring-0 focus:border-b-2 focus:border-emerald-500" %>
+        </div>
+      </div>
+      <%= f.submit "Create account", class: "bg-emerald-500 font-bold text-white px-3 py-2 w-full rounded-md mt-4 hover:bg-emerald-600 cursor-pointer" %>
+    <% end %>
+  </div>
+</div>
