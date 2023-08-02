@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def create 
     @user = User.create(signup_params)
     if @user.save 
-      # redirect_to root_path
+      session[:user_id] = @user.id
+      redirect_to dashboard_path(@user.id)
     else
       render :new, status: :unprocessable_entity
     end
