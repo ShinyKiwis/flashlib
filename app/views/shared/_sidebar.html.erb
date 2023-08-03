@@ -1,0 +1,25 @@
+<div class="relative h-screen w-24 md:w-28 bg-zinc-800 flex flex-col items-center py-8 gap-2 duration-300" 
+  data-controller="sidebar" data-sidebar-target="sidebar">
+  <div class="text-slate-400 text-5xl w-fit font-bold flex flex-col items-center ">
+    <i class="fa-solid fa-circle-user"></i>
+    <p class="hidden text-xl mt-2" data-sidebar-target="content"><%= current_user.username %></p>
+  </div>
+  <div class="text-slate-400 text-3xl md:text-2xl w-fit font-bold flex items-center mt-4 cursor-pointer hover:text-slate-500 gap-2">
+    <i class="fa-solid fa-circle-plus"></i>
+    <span class="hidden text-xl" data-sidebar-target="content">Create new class</span>
+  </div>
+  <p class="hidden text-lg text-slate-400 font-bold w-full px-4 mt-2" data-sidebar-target="content">My classes (0)</p>
+  <div class="w-10 h-10 absolute top-10 -right-5 rounded-full text-slate-400 flex justify-center items-center 
+    bg-zinc-900 border-2 border-slate-400 cursor-pointer" data-sidebar-target="expand" data-action="click->sidebar#expand">
+    <i class="fa-solid fa-angles-right"></i>
+  </div>
+  <div class="w-10 h-10 absolute top-10 -right-5 rounded-full text-slate-400 hidden justify-center items-center 
+    bg-zinc-900 border-2 border-slate-400 cursor-pointer " data-sidebar-target="shrink" data-action="click->sidebar#shrink">
+    <i class="fa-solid fa-angles-left"></i>
+  </div>
+  <%= link_to session_path, data: {turbo_method: :delete}, class:"text-slate-400 text-3xl md:text-2xl w-fit font-bold flex items-center 
+    cursor-pointer hover:text-red-700 gap-2 mt-auto" do %>
+    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+    <span class="hidden text-xl" data-sidebar-target="content">Sign out</span>
+  <% end %>
+</div>
