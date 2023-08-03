@@ -2,7 +2,7 @@
   data-controller="sidebar" data-sidebar-target="sidebar">
   <div class="text-slate-400 text-5xl w-fit font-bold flex flex-col items-center ">
     <i class="fa-solid fa-circle-user"></i>
-    <p class="hidden text-xl mt-2" data-sidebar-target="content"><%= current_user.username %></p>
+    <p class="hidden text-xl mt-2" data-sidebar-target="content"><%= @user.username %></p>
   </div>
   <div class="text-slate-400 text-3xl md:text-2xl w-fit font-bold flex items-center mt-4 cursor-pointer hover:text-slate-500 gap-2">
     <i class="fa-solid fa-circle-plus"></i>
