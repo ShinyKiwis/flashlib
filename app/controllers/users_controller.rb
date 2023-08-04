@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(signup_params)
     if @user.save 
       session[:user_id] = @user.id
-      redirect_to dashboard_path(@user.id)
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end

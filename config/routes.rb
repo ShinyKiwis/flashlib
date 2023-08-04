@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
 
-  resources :dashboards, only: [:show]
+  resource :dashboard, only: [:show]  
+  get 'dashboard/:slug/decks', to: 'decks#index', as: "deck"
+
   resource :session, only: [:destroy]
+  resources :fclasses
   get 'signin', to: 'sessions#new'
   post 'signin', to: 'sessions#create'
 

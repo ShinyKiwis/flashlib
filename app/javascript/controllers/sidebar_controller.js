@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["sidebar", "expand", "shrink", "content"]
+  static targets = ["sidebar", "expand", "shrink", "content", "fclass"]
   connect() {
     console.log("Sidebar Controller connected")
   }
@@ -25,6 +25,9 @@ export default class extends Controller {
     this.contentTargets.forEach(element => {
       element.classList.remove("hidden")
     })
+    this.fclassTargets.forEach(element => {
+      element.classList.remove("hidden")
+    })
   }
 
   handleMediumShrink() {
@@ -43,6 +46,9 @@ export default class extends Controller {
     this.handleMediumShrink()
     this.handleSmallShrink()
     this.contentTargets.forEach(element => {
+      element.classList.add("hidden")
+    })
+    this.fclassTargets.forEach(element => {
       element.classList.add("hidden")
     })
   }
