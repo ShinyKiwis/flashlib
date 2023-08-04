@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def active_fclass?(fclass_title)
-    "#{fclass_title.downcase}-#{current_user.id}" == params[:slug]
+    "#{fclass_title.downcase.gsub(' ', '-')}-#{current_user.id}" == params[:slug]
   end
 end
