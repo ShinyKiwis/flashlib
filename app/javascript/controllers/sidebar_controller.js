@@ -1,9 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["sidebar", "expand", "shrink", "content", "fclass"]
+  static targets = ["sidebar", "expand", "shrink", "content", "fclass", "prompt"]
   connect() {
     console.log("Sidebar Controller connected")
+    if(document.cookie.includes('sidebarFull=true')) {
+      this.expand()
+    }else {
+      this.shrink()
+    }
   }
 
   handleMediumExpand() {
@@ -28,6 +33,10 @@ export default class extends Controller {
     this.fclassTargets.forEach(element => {
       element.classList.remove("hidden")
     })
+    this.promptTargets.forEach(element => {
+      element.classList.remove("group-hover:block")
+    })
+    document.cookie = "sidebarFull=true;"
   }
 
   handleMediumShrink() {
@@ -45,11 +54,15 @@ export default class extends Controller {
   shrink() {
     this.handleMediumShrink()
     this.handleSmallShrink()
+    document.cookie = "sidebarFull=false;"
     this.contentTargets.forEach(element => {
       element.classList.add("hidden")
     })
     this.fclassTargets.forEach(element => {
       element.classList.add("hidden")
+    })
+    this.promptTargets.forEach(element => {
+      element.classList.add("group-hover:flex")
     })
   }
 }

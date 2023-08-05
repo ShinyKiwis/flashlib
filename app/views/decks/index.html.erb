@@ -1,5 +1,9 @@
 <div class="flex gap-4" data-controller="dashboard">
   <%= render 'shared/sidebar' %>
-
+  <div class="mx-auto mt-56 text-center text-slate-900 md:p-2 z-0">
+    <div class="absolute left-32 right-16 md:static">
+      <%= @fclass.title %>
+    </div>
+  </div>
   <%= render 'dashboards/modal' %>
 </div>

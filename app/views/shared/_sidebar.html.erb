@@ -12,7 +12,7 @@
   <p class="hidden text-lg text-slate-400 font-bold w-full px-4 mt-2" data-sidebar-target="content">
     My classes <span>(<%= @user.fclasses.size %>)</span>
   </p>
-  <div class="mt-4 w-full h-full overflow-auto flex flex-col gap-2 items-center">
+  <div class="mt-4 w-full h-full overflow-x-hidden overflow-y-auto flex flex-col gap-2 items-center">
     <% @user.fclasses.each do |fclass| %>
       <%= render 'fclasses/sidebar_title', fclass: fclass %>
     <% end %>
