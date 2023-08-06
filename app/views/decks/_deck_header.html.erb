@@ -1,0 +1,22 @@
+<div class="flex gap-2 md:gap-6 items-center">
+  <%= form_with model: @fclass do |f| %>
+    <div class="w-40 h-40 relative group text-6xl md:text-7xl border-2 border-transparent hover:border-slate-600 rounded-xl cursor-pointer p-4 flex justify-center items-center"
+    onclick="document.getElementById('class_img').click()">
+      <% if fclass.class_img.file.nil? %>
+        <i class="fa-solid fa-clone text-zinc-900"></i>
+      <% else %>
+        <%= image_tag fclass.class_img.url, class: 'w-full h-full rounded-md shadow-lg shadow-slate-900/50' %>
+      <% end %>
+      <span class="absolute hidden group-hover:block text-base bg-slate-600 text-slate-400 text-center p-1 -bottom-4 -right-4 rounded-full w-8 h-8">
+        <i class="fa-regular fa-pen-to-square hover:text-slate-300"></i>
+      </span>
+    </div>
+    <%= f.file_field :class_img, id:'class_img', class: 'hidden', onchange: 'this.form.submit()'%>
+    <%= f.submit "", class: 'hidden' %>
+  <% end %>
+  <div class="flex flex-col text-xl text-zinc-900 font-bold">
+    <h2 class="text-2xl"><%= fclass.title %></h2>
+    <p class="font-semibold text-base">Creator: <span><%= user.username %></span></p>
+    <%= button_to "Study", "", class: "text-lg bg-zinc-500 text-slate-300 w-56 rounded-2xl mt-2" %>
+  </div>
+</div>

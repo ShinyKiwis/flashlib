@@ -9,4 +9,16 @@ class FclassesController < ApplicationController
       # Popup message
     end
   end
+
+  def update
+    fclass = Fclass.friendly.find(params[:id])
+    fclass.class_img = params[:fclass][:class_img]
+    fclass.save
+    redirect_to request.referrer
+  end
+
+  private
+  def fclass_params
+    params.require(:fclass).permit(:title)
+  end
 end
