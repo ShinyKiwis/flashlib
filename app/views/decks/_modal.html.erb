@@ -1,0 +1,17 @@
+<div class="hidden fixed top-0 bottom-0 left-0 right-0 bg-slate-950 opacity-70 z-10" data-deck-target="overlay" data-action="click->deck#hide">
+</div>
+
+<div class="hidden fixed bg-white z-20 top-56 text-center p-2 py-6 rounded-xl left-6 right-6 md:left-1/3 md:right-1/3" data-deck-target="modal">
+  <div class="absolute top-2 right-4 cursor-pointer text-xl text-slate-400 hover:text-slate-900" data-action="click->deck#hide">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+  <div class="font-bold text-xl text-emerald-500">
+    Create New Deck
+  </div>
+  <p class="font-semibold mb-2">A Deck contains multiple cards of same topic</p>
+  <%= form_with(url: "/decks", html: {class: 'flex flex-col items-center gap-2'}) do |f|%>
+    <%= f.hidden_field :slug, value: params[:slug] %>
+    <%= f.text_field :deck_title, autofocus: true, placeholder: 'Deck title', class:"rounded-md focus:ring-0 border-2 border-slate-400 focus:border-emerald-500" %>
+    <%= f.submit "Create", class: "cursor-pointer bg-emerald-500 hover:bg-emerald-600 w-fit text-white font-semibold px-2 py-1 rounded-md" %>
+  <% end %>
+</div>
