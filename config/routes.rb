@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
 
   resource :dashboard, only: [:show]  
-  get 'dashboard/:slug/decks', to: 'decks#index', as: "deck"
+  get 'dashboard/:slug/decks', to: 'decks#index', as: "dashboard_deck"
 
   resource :session, only: [:destroy]
   resources :fclasses
@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get 'signin', to: 'sessions#new'
   post 'signin', to: 'sessions#create'
 
-  root "sessions#new"
+  root "dashboards#show"
 end

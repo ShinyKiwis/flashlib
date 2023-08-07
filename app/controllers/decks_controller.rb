@@ -16,7 +16,9 @@ class DecksController < ApplicationController
   end
 
   def destroy
-    fail
+    deck = Deck.find(params[:id])
+    deck.destroy 
+    redirect_to request.referrer
   end
 end
 

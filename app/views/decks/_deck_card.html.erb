@@ -1,4 +1,4 @@
-<div class="flex text-xl h-12 items-center hover:bg-slate-300 px-4 cursor-pointer mt-2 rounded-md odd:bg-slate-100">
+<div class="flex text-xl h-12 items-center hover:bg-slate-300 px-4 cursor-pointer mt-2 rounded-md bg-slate-100">
   <div>
     <h3 class=""><%= deck.title %></h3>
   </div>
@@ -8,7 +8,6 @@
     <i class="fa-solid fa-circle-play text-blue-500 hover:text-blue-700"></i>
   </div>
   <div class="ms-auto md:hidden text-2xl">
-    <i class="fa-solid fa-ellipsis" data-action="click->deck#show_option"></i>
+    <i class="fa-solid fa-ellipsis" data-action="click->deck#show_option" data-deck-id-value=<%= deck.id %>></i>
   </div>
 </div>
-
