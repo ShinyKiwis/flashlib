@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   resource :session, only: [:destroy]
   resources :fclasses
   resources :decks, only: [:index, :create, :destroy]
+  resources :cards, only: [:create]
+  get ':slug/decks/:id/edit', to: 'decks#edit', as: "edit_deck"
   get 'signin', to: 'sessions#new'
   post 'signin', to: 'sessions#create'
 
   root "dashboards#show"
-end
+end 

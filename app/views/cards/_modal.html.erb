@@ -1,0 +1,10 @@
+<div class="flex flex-col md:flex-row w-full border-2 border-slate-400 focus-within:border-emerald-500 rounded-lg px-4 py-2" data-card-target="modal">
+  <div class="flex items-center flex-1 border-b-2 md:border-b-0 md:border-e-4 border-slate-200 md:me-2 w-full">
+    <span class="text-slate-400 font-semibold text-2xl">Q</span>
+    <%= f.text_area :question, class: 'h-10 md:h-8 w-full border-none focus:ring-0', placeholder: 'Question', data: {card_target: 'textarea'} %>
+  </div>
+  <div class="flex items-center flex-1 w-full">
+    <span class="text-slate-400 font-semibold text-2xl">A</span>
+    <%= f.text_area :answer, class: 'h-10 md:h-8 w-full border-none focus:ring-0', placeholder: 'Answer', data: {card_target: 'textarea'} %>
+  </div>
+</div>
