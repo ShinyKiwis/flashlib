@@ -8,7 +8,7 @@
     <div class="w-11/12 md:w-full mx-auto">
       <% @decks.each do |deck| %>
         <%= render 'decks/deck_card', deck: deck, fclass: @fclass %>
-        <%= render 'decks/deck_option', deck: deck %>
+        <%= render 'decks/deck_option', deck: deck, fclass: @fclass %>
       <% end %>
     </div>
     <div class="text-slate-600 md:text-slate-400 text-2xl md:text-2xl w-fit font-bold flex items-center my-4 cursor-pointer hover:text-slate-600 gap-2" 

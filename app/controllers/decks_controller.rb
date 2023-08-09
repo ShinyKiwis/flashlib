@@ -6,6 +6,13 @@ class DecksController < ApplicationController
     @decks = @fclass.decks
   end
 
+  def show
+    @user = User.find(params[:slug].split('-').last)
+    @fclass = Fclass.friendly.find(params[:slug])
+    @deck = Deck.find(params[:id]) 
+    @cards = @deck.cards
+  end
+
   def edit
     @deck = Deck.find(params[:id])
     @fclass = Fclass.friendly.find(@deck.fclass_id)

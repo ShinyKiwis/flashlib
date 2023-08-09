@@ -9,7 +9,9 @@
     <%= link_to edit_deck_path(fclass, deck) do %> 
       <i class="fa-solid fa-pen text-emerald-500 hover:text-emerald-700"></i>
     <% end %>
-    <i class="fa-solid fa-circle-play text-blue-500 hover:text-blue-700"></i>
+    <%= link_to deck_study_path(fclass, deck) do %>
+      <i class="fa-solid fa-circle-play text-blue-500 hover:text-blue-700"></i>
+    <% end %>
   </div>
   <div class="ms-auto md:hidden text-2xl">
     <i class="fa-solid fa-ellipsis" data-action="click->deck#show_option" data-deck-id-value=<%= deck.id %>></i>

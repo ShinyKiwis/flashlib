@@ -15,7 +15,7 @@
         <i class="fa-solid fa-circle-play"></i>
         <span class="col-span-3 text-left">Start studying</span>
       <% end %>
-      <%= button_to "#", class:"grid grid-cols-4 items-center bg-emerald-500 text-white px-4 py-2 rounded-lg w-full" do %> 
+      <%= link_to edit_deck_path(fclass, deck), class:"grid grid-cols-4 items-center bg-emerald-500 text-white px-4 py-2 rounded-lg w-full" do %> 
         <i class="fa-solid fa-pen"></i>
         <span class="col-span-3 text-left">Edit deck</span>
       <% end %>

@@ -11,7 +11,19 @@ export default class extends Controller {
         textarea.addEventListener("input", this.OnInput, false);
     })
 
-    // Initial question on edit
+    // Initial question on edit - change the ids
+    // const modals = this.modalTargets
+    // Array.from(modals).forEach(modal => {
+    //   console.log(modal)
+    //   Array.from(modal.children).forEach(child => {
+    //     const childID = child.getElementsByTagName("textarea")[0].id
+    //     child.getElementsByTagName("textarea")[0].id = childID + "-" + this.counter
+    //     child.getElementsByTagName("textarea")[0].name = childID + "-" + this.counter
+    //     if(childID.includes("answer")) {
+    //       this.counter+=1
+    //     }
+    //   })
+    // })
   }
 
   submit() {
@@ -24,8 +36,9 @@ export default class extends Controller {
     Array.from(cloneModal.children).forEach(child => {
       const childID = child.getElementsByTagName("textarea")[0].id
       child.getElementsByTagName("textarea")[0].value = ''
-      child.getElementsByTagName("textarea")[0].id = childID + "-" + this.counter
-      child.getElementsByTagName("textarea")[0].name = childID + "-" + this.counter
+      let type = childID.includes("question") ? "question" : "answer"
+      child.getElementsByTagName("textarea")[0].id = type + "-" + this.counter + "-new"
+      child.getElementsByTagName("textarea")[0].name = type + "-" + this.counter + "-new"
     })
     this.counter += 1
     this.formTarget.appendChild(cloneModal)
@@ -34,5 +47,19 @@ export default class extends Controller {
   OnInput() {
     this.style.height = 0;
     this.style.height = (this.scrollHeight) + "px";
+  }
+
+  delete(event) {
+    const deleteModal = event.target.closest("div").previousElementSibling
+    Array.from(deleteModal.children).forEach(child => {
+      const childID = child.getElementsByTagName("textarea")[0].id
+      if(childID.includes("new")) {
+        deleteModal.remove()
+        return
+      }
+      child.getElementsByTagName("textarea")[0].id = childID + "-" + this.counter + "-delete"
+      child.getElementsByTagName("textarea")[0].name = childID + "-" + this.counter + "-delete"
+    })
+    deleteModal.classList.add("hidden")
   }
 }

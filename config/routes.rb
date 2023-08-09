@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :session, only: [:destroy]
   resources :fclasses
   resources :decks, only: [:index, :create, :destroy]
+  get 'dashboard/:slug/decks/:id', to: 'decks#show', as: 'deck_study'
   resources :cards, only: [:create]
   get ':slug/decks/:id/edit', to: 'decks#edit', as: "edit_deck"
   get 'signin', to: 'sessions#new'
