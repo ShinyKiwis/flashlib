@@ -9,8 +9,12 @@
     <%= link_to edit_deck_path(fclass, deck) do %> 
       <i class="fa-solid fa-pen text-emerald-500 hover:text-emerald-700"></i>
     <% end %>
-    <%= link_to deck_study_path(fclass, deck) do %>
-      <i class="fa-solid fa-circle-play text-blue-500 hover:text-blue-700"></i>
+    <% if deck.cards.size != 0 %>
+      <%= link_to deck_study_path(fclass, deck) do %>
+        <i class="fa-solid fa-circle-play text-blue-500 hover:text-blue-700"></i>
+      <% end %>
+    <% else %>
+        <i class="fa-solid fa-circle-play text-zinc-500 hover:text-zinc-600"></i>
     <% end %>
   </div>
   <div class="ms-auto md:hidden text-2xl">
