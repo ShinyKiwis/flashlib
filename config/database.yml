@@ -84,6 +84,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: flashlib_production
   username: flashlib
   password: <%= ENV["FLASHLIB_DATABASE_PASSWORD"] %>
