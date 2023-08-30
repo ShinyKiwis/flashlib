@@ -3,13 +3,13 @@
   <div class="relative mx-2 md:mx-10 mt-4 text-slate-900 md:p-2 z-20 font-semibold" style="width:95%">
     <%= render 'deck_header', fclass: @fclass, user: @user %>
     <div class="flex justify-between border-b-2 border-slate-500">
-      <h2 class="text-xl w-full">Deck: <span class="text-emerald-500 z-10"><%= @deck.title %></span> - <%= @deck.cards.size %> 
+      <h2 class="text-md md:text-xl w-full">Deck: <span class="text-emerald-500 z-10"><%= @deck.title %></span> - <%= @deck.cards.size %> 
     <%= "card".pluralize(@deck.cards.size) %></h2>
       <button class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-lg px-4 py-1 rounded-lg mb-2" data-action="click->card#submit" >
         Save
       </button>
     </div>
-    <div class="w-full mt-2 h-fit">
+    <div class="w-full no-scrollbar mt-2 overflow-auto" id="card-container">
       <%= form_with(url: '/cards', html: {class: 'flex flex-col items-center w-full gap-2'}, 
                     data: {card_target: 'form'}) do |f| %>
         <%= f.hidden_field :deck_id, value: params[:id] %>
